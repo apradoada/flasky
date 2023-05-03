@@ -1,6 +1,7 @@
 import pytest
 from app import create_app, db
 from flask.signals import request_finished
+from app.models.cat import Cat
 
 @pytest.fixture
 def app():
@@ -20,3 +21,14 @@ def app():
 @pytest.fixture
 def client(app):
     return app.test_client()
+
+@pytest.fixture
+def one_cat(app):
+    cat =  Cat(
+        name="Foo",
+        color="black",
+        personality="sleepy"
+    )
+    db.session.add(cat)
+    db.session.commit()
+    return cat
