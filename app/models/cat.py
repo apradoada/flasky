@@ -9,6 +9,30 @@ class Cat(db.Model):
     color = db.Column(db.String, nullable=False)
     personality = db.Column(db.String, nullable=False)
 
+    def to_dict(self):
+        return {
+                "id": self.id,
+                "name": self.name,
+                "color": self.color,
+                "personality": self.personality
+                }
+    
+    @classmethod
+    def from_dict(cls, data_dict):
+        return cls(
+            name = data_dict["name"],
+            color = data_dict["color"],
+            personality = data_dict["personality"]
+        )
+    
+        # return dict(
+        #         id=self.id, 
+        #         name=self.name, 
+        #         color=self.color, 
+        #         personality=self.personality
+        #     )
+
+
 # class Cat:
 #     def __init__(self, id, name, color, personality):
 #         self.id = id
