@@ -3,7 +3,7 @@ from .db import db, migrate
 from .models.cat import Cat
 from .models.caretaker import Caretaker
 from .routes.cat_routes import bp as cats_bp
-from .routes.caretaker_routes import bp as caretakers_bp
+# from .routes.caretaker_routes import bp as caretakers_bp
 
 import os
 
@@ -21,6 +21,6 @@ def create_app(config = None):
     migrate.init_app(app, db)
 
     app.register_blueprint(cats_bp)
-    app.register_blueprint(caretakers_bp)
+    # app.register_blueprint(caretakers_bp)
 
     return app
