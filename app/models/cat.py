@@ -8,7 +8,8 @@ class Cat(db.Model):
     name: Mapped[str]
     color: Mapped[str]
     personality: Mapped[str]
-    caretaker_id: Mapped[Optional["Caretaker"]] = relationship(back_populates="cats")
+    caretaker_id: Mapped[Optional[int]] = mapped_column(ForeignKey("caretaker.id"))
+    caretaker: Mapped[Optional["Caretaker"]] = relationship(back_populates="cats")
 
     def to_dict(self):
         result = {
